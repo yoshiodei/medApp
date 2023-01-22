@@ -22,7 +22,11 @@ const Home = ({navigation, patients}) => {
               >
                 <Text style={styles.serviceText}>Patients</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.serviceButton}>
+            <TouchableOpacity 
+              style={styles.serviceButton}
+              activeOpacity={0.6}
+              onPress={()=> { navigation.navigate('ServiceHistory') } }
+            >
                 <Text style={styles.serviceText}>Service History</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.serviceButton}>
