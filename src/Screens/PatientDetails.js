@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, FlatList, Text, View, TouchableOpacity, ScrollView, Modal, TextInput, Platform} from 'react-native';
+import { SafeAreaView, StyleSheet, FlatList, Text, View, TouchableOpacity, Linking} from 'react-native';
 import { Entypo, MaterialIcons, SimpleLineIcons, FontAwesome} from '@expo/vector-icons';
 import DetailPanel from '../Components/DetailPanel';
 
@@ -30,7 +30,7 @@ export default function PatientDetails({navigation}) {
                             <Entypo name="chevron-right" size={22} color={primaryColor} />
                         </TouchableOpacity>
                     </View>
-                </View>
+                </View> 
                 <View style={[styles.patientDetailsInfo]}>
                     <View style={styles.patientInfoLeftDiv}>
                         <View style={styles.patientInfoImageDiv}>
@@ -45,14 +45,16 @@ export default function PatientDetails({navigation}) {
                         <TouchableOpacity 
                             style={styles.patientInfoButtonDiv}
                             activeOpacity={0.6}
-                         >
+                            onPress={() => navigation.navigate('StartVisit')}
+                        >
                                 <Text style={styles.patientInfoButtonText}>Start Visit</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
                 <View style={styles.patientDetailsButtonDiv}>
                     <View style={styles.patientDetailsButtonInnerDiv} >
-                        <TouchableOpacity 
+                        <TouchableOpacity
+                            onPress={() => Linking.openURL('tel:+233574940523')} 
                             style={styles.detailActionDiv}
                             activeOpacity={0.6}
                         >
@@ -63,6 +65,7 @@ export default function PatientDetails({navigation}) {
                         </TouchableOpacity>
                         <View style={styles.verticalBar} ></View>
                         <TouchableOpacity 
+                            onPress={() => Linking.openURL('https://wa.me/+233574940523')}
                             style={styles.detailActionDiv}
                             activeOpacity={0.6}
                         >
@@ -73,6 +76,7 @@ export default function PatientDetails({navigation}) {
                         </TouchableOpacity>
                         <View style={styles.verticalBar}></View>
                         <TouchableOpacity 
+                            onPress={() => Linking.openURL('mailto:yoshiodei@yahoo.com')} 
                             style={styles.detailActionDiv}
                             activeOpacity={0.6}
                         >

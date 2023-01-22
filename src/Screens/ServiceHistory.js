@@ -90,6 +90,24 @@ export default function ServiceHistory({navigation}) {
   
   return (
     <SafeAreaView style={styles.container}>
+        <View style={styles.patientDetailsNavigation} >
+            <View style={styles.navigationButtonDiv}>
+                <TouchableOpacity 
+                style={[styles.navigationButton, styles.elevation]}
+                activeOpacity={0.6}
+                onPress={()=>navigation.goBack()}
+                >
+                    <Entypo name="chevron-left" size={22} color={primaryColor} />
+                </TouchableOpacity>
+                <TouchableOpacity 
+                style={[styles.navigationButton, styles.elevation]}
+                activeOpacity={0.6}
+                onPress={()=>{}}
+                >
+                    <Entypo name="chevron-right" size={22} color={primaryColor} />
+                </TouchableOpacity>
+            </View>
+        </View> 
         <SectionList
             showsVerticalScrollIndicator={false} 
             keyExtractor={(item, index) => index.toString()}
