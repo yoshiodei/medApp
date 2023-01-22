@@ -6,8 +6,9 @@ import { Ionicons } from '@expo/vector-icons';
 import LogOut from '../Screens/LogOut';
 import 'react-native-gesture-handler';
 import Help from '../Screens/Help';
-// import Main from '../Screens/Main';
 import HomeRoutes from './HomeRoutes';
+import TestMaps from '../Screens/TestMap';
+import StartCare from '../Screens/StartCare';
 
 
 export default function MainRoutes() {
@@ -34,7 +35,7 @@ export default function MainRoutes() {
             },
             headerTitleAlign: 'center',
             headerLeftContainerStyle: {
-              paddingLeft: 10
+              paddingLeft: 15
             },
             headerRightContainerStyle: {
               paddingRight: 20
@@ -58,10 +59,18 @@ export default function MainRoutes() {
             drawerInactiveTintColor: primaryColor,
           })}
         >
-          <Drawer.Screen name="HomeRoutes" component={HomeRoutes} />
+          <Drawer.Screen 
+            name="HomeRoutes" 
+            component={HomeRoutes}
+            options={{
+              title: 'Home'
+            }} 
+          />
           <Drawer.Screen name="Privacy Policy" component={PrivacyPolicy} />
           <Drawer.Screen name="Help" component={Help} />
           <Drawer.Screen name="Logout" component={LogOut} />
+          <Drawer.Screen name="Test Map" component={TestMaps} />
+          <Drawer.Screen name="Test Start Care" component={StartCare} />
          </Drawer.Navigator>
     </NavigationContainer>
 
