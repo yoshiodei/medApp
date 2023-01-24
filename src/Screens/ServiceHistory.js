@@ -1,5 +1,6 @@
 import { SafeAreaView, StyleSheet, SectionList, Text, View, TouchableOpacity, ScrollView, Modal, TextInput, Platform} from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import ScreenHeading from '../Components/ScreenHeading';
+import { FontAwesome, Entypo } from '@expo/vector-icons';
 
 export default function ServiceHistory({navigation}) {
 
@@ -90,51 +91,37 @@ export default function ServiceHistory({navigation}) {
   
   return (
     <SafeAreaView style={styles.container}>
-        <View style={styles.patientDetailsNavigation} >
-            <View style={styles.navigationButtonDiv}>
-                <TouchableOpacity 
-                style={[styles.navigationButton, styles.elevation]}
-                activeOpacity={0.6}
-                onPress={()=>navigation.goBack()}
-                >
-                    <Entypo name="chevron-left" size={22} color={primaryColor} />
-                </TouchableOpacity>
-                <TouchableOpacity 
-                style={[styles.navigationButton, styles.elevation]}
-                activeOpacity={0.6}
-                onPress={()=>{}}
-                >
-                    <Entypo name="chevron-right" size={22} color={primaryColor} />
-                </TouchableOpacity>
-            </View>
-        </View> 
-        <SectionList
-            showsVerticalScrollIndicator={false} 
-            keyExtractor={(item, index) => index.toString()}
-            sections={HistoryData}
-            renderSectionHeader={({section})=>(
-                <View style={styles.sectionHeaderView}>
-                    <Text style={styles.sectionHeaderText}>{section.title}</Text>
-                </View>
-            )}
-            renderItem={({item})=>(
-                <View style={styles.sectionItemView}>
-                    <View style={styles.sectionItemDateView}>
-                        <Text>{item.date}</Text>
-                        <Text>{item.time}</Text>
+        <ScreenHeading Title={'Service History'} navigation={navigation} />
+        <View style={styles.ListContainerView}>
+            <SectionList
+                showsVerticalScrollIndicator={false} 
+                keyExtractor={(item, index) => index.toString()}
+                sections={HistoryData}
+                renderSectionHeader={({section})=>(
+                    <View style={styles.sectionHeaderView}>
+                        <Text style={styles.sectionHeaderText}>{section.title}</Text>
                     </View>
-                    <View style={styles.sectionItemIconView}>
-                        <View style={styles.sectionItemIconInnerView}>
-                            <FontAwesome name="check" size={18} color="#FFF" />
+                )}
+                renderItem={({item, index, section})=>(
+                    <View style={styles.sectionItemView}>
+                        <View style={styles.sectionItemDateView}>
+                            <Text style={styles.sectionItemDate} >{item.date}</Text>
+                            <Text style={styles.sectionItemTime} >{item.time}</Text>
+                        </View>
+                        <View style={styles.sectionItemIconView}>
+                            <View style={styles.sectionItemIconInnerView}>
+                                <FontAwesome name="check" size={18} color="#FFF" />
+                            </View>
+                            <View style={section.data.length-1 === index ? null : styles.sectionItemLineView}></View>
+                        </View>
+                        <View style={styles.sectionItemDetailView}>
+                            <Text style={styles.activityTitle}>{item.activityTitle}</Text>
+                            <Text style={styles.activityDetail}>{item.activityDetail}</Text>
                         </View>
                     </View>
-                    <View style={styles.sectionItemDetailView}>
-                        <Text style={styles.activityTitle}>{item.activityTitle}</Text>
-                        <Text style={styles.activityDetail}>{item.activityDetail}</Text>
-                    </View>
-                </View>
-            )}
-        />
+                )}
+            />
+        </View>
     </SafeAreaView>
   );
 }
@@ -149,7 +136,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
+  },
+  ListContainerView: {
     paddingHorizontal: 20,
+    flex: 1
   },
   sectionHeaderView: {
     backgroundColor: primaryColor,
@@ -168,7 +158,7 @@ const styles = StyleSheet.create({
   sectionItemView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 20
+    marginBottom: 12
   },
   sectionItemDetailView: {
     alignItems: 'flex-start',
@@ -177,9 +167,11 @@ const styles = StyleSheet.create({
     flex: 6,
     paddingLeft: 15,
   },
-  sectionItemIconlView: {
+  sectionItemIconView: {
     height: 'auto',
-    flex: 1
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   sectionItemDateView: {
     height: 'auto',
@@ -191,7 +183,15 @@ const styles = StyleSheet.create({
     width: 28,
     borderRadius: 4,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  sectionItemLineView:{
+    flex: 1,
+    width: 4,
+    borderRadius: 50,
+    backgroundColor: 'lightgrey',
+
   },
   activityTitle: {
     lineHeight: 20,
@@ -202,7 +202,17 @@ const styles = StyleSheet.create({
   },
   activityDetail: {
     fontSize: 14,
+    fontWeight: '400',
+    color: primaryColor
+  },
+  sectionItemDate: {
     fontWeight: '500',
+    fontSize: 15,
+    lineHeight: 18,
+    color: primaryColor,
+  },
+  sectionItemTime: {
+    fontSize: 13,
     color: primaryColor
   },
 });
