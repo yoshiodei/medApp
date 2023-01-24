@@ -1,6 +1,7 @@
 import { SafeAreaView, StyleSheet, FlatList, Text, View, TouchableOpacity, Linking} from 'react-native';
 import { Entypo, MaterialIcons, SimpleLineIcons, FontAwesome} from '@expo/vector-icons';
 import DetailPanel from '../Components/DetailPanel';
+import ScreenHeading from '../Components/ScreenHeading';
 
 export default function PatientDetails({navigation}) {
 
@@ -13,24 +14,7 @@ export default function PatientDetails({navigation}) {
       <SafeAreaView style={styles.container}>
           <View style={styles.patientDetailsTopDiv}>
             <View style={styles.patientDetailsTopInnerDiv}>
-                <View style={styles.patientDetailsNavigation} >
-                    <View style={styles.navigationButtonDiv}>
-                        <TouchableOpacity 
-                        style={[styles.navigationButton, styles.elevation]}
-                        activeOpacity={0.6}
-                        onPress={()=>navigation.goBack()}
-                        >
-                            <Entypo name="chevron-left" size={22} color={primaryColor} />
-                        </TouchableOpacity>
-                        <TouchableOpacity 
-                        style={[styles.navigationButton, styles.elevation]}
-                        activeOpacity={0.6}
-                        onPress={()=>{}}
-                        >
-                            <Entypo name="chevron-right" size={22} color={primaryColor} />
-                        </TouchableOpacity>
-                    </View>
-                </View> 
+                <ScreenHeading Title='' navigation={navigation} />
                 <View style={[styles.patientDetailsInfo]}>
                     <View style={styles.patientInfoLeftDiv}>
                         <View style={styles.patientInfoImageDiv}>
@@ -127,7 +111,6 @@ export default function PatientDetails({navigation}) {
     patientDetailsTopDiv: {
       flex: 4,
       width: '100%',
-    //   backgroundColor: 'dimgrey',
     },
     patientDetailsTopInnerDiv:{
       width: '100%',
@@ -136,28 +119,6 @@ export default function PatientDetails({navigation}) {
       borderBottomStartRadius: 35,
       backgroundColor: 'white', 
       overflow: 'hidden', 
-    },
-    patientDetailsNavigation: {
-      flex: 0.8,
-      flexDirection: 'row',
-      justifyContent: 'flex-end',
-      alignItems: 'center',
-      paddingHorizontal: 20,
-    },
-    navigationButtonDiv:{
-        flexDirection: 'row',
-        width: 60,
-        justifyContent: 'space-between',
-    },
-    navigationButton:{
-        borderRadius: 50,
-        backgroundColor: '#FFF',
-        height: 28,
-        width: 28,
-        borderWidth: 1,
-        borderColor: '#00000010',
-        justifyContent: 'center',
-        alignItems: 'center',   
     },
     patientDetailsInfo: {
       flex: 1.1,

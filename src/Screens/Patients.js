@@ -2,6 +2,7 @@ import { SafeAreaView, StyleSheet, FlatList, Text, View, TouchableOpacity} from 
 import { Entypo} from '@expo/vector-icons';
 import PatientsInfoPanel from '../Components/PatientInfoPanel';
 import SearchBar from '../Components/SearchBar';
+import ScreenHeading from '../Components/ScreenHeading';
 
 export default function Patients({navigation}) {
 
@@ -63,25 +64,7 @@ export default function Patients({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
         
-            <View style={styles.headingDiv}>
-              <Text style={styles.headingText}>Patients List</Text>
-              <View style={styles.headingButtonDiv}>
-                <TouchableOpacity 
-                  style={[styles.headingButton, styles.elevation]}
-                  activeOpacity={0.6}
-                  onPress={()=>navigation.goBack()}
-                >
-                    <Entypo name="chevron-left" size={22} color={primaryColor} />
-                </TouchableOpacity>
-                <TouchableOpacity 
-                  style={[styles.headingButton, styles.elevation]}
-                  activeOpacity={0.6}
-                  onPress={()=> console.log(navigation)} 
-                >
-                    <Entypo name="chevron-right" size={22} color={primaryColor} />
-                </TouchableOpacity>
-              </View>
-            </View>
+            <ScreenHeading Title={'Patients List'} navigation={navigation} />
             <SearchBar />
             <View style={styles.listDiv}>
               <FlatList
@@ -107,39 +90,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     paddingTop: 25,
-  },
-  headingDiv: {
-    width: '100%',
-    height: 50,
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    paddingHorizontal: 20,
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  headingText: {
-    fontSize: 18,
-    color: primaryColor,
-    fontWeight: '800',
-  },
-  headingButton: {
-    borderRadius: 50,
-    backgroundColor: '#FFF',
-    height: 28,
-    width: 28,
-    borderWidth: 1,
-    borderColor: '#00000010',
-    justifyContent: 'center',
-    alignItems: 'center',    
-  },
-  headingButtonDiv: {
-    flexDirection: 'row',
-    width: 60,
-    justifyContent: 'space-between',
-  },
-  elevation: {
-    shadowColor: 'black',
-    elevation: 6,
   },
   listDiv: {
     flex: 1,
