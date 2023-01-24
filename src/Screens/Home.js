@@ -29,7 +29,11 @@ const Home = ({navigation, patients}) => {
             >
                 <Text style={styles.serviceText}>Service History</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.serviceButton}>
+            <TouchableOpacity 
+              style={styles.serviceButton}
+              activeOpacity={0.6}
+              onPress={()=> { navigation.navigate('Schedules') } }
+            >
                 <Text style={styles.serviceText}>Schedules</Text>
             </TouchableOpacity>
         </View>
